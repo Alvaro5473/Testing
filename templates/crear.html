@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Item</title>
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+</head>
+<body>
+    <h1>Crear Nuevo Item</h1>
+    <form action="{{ url_for('crear_item') }}" method="POST">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="peso">Peso</label>
+        <input type="number" id="peso" name="peso">
+
+        <label for="tamano">Tamaño</label>
+        <input type="number" id="tamano" name="tamano">
+
+        <label for="velocidad">Velocidad</label>
+        <input type="number" id="velocidad" name="velocidad"><br>
+
+        <button type="submit">Crear</button>
+    </form>
+    <a class="button" href="{{ url_for('index') }}">Volver a la lista</a>
+</body>
+</html>

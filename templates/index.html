@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Items</title>
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+</head>
+<body>
+    <h1>Lista de Items</h1>
+    <a class="button" href="{{ url_for('crear_item') }}">Crear nuevo item</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Peso</th>
+                <th>Tamaño</th>
+                <th>Velocidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td>
+                    <a class="button" href="{{ url_for('actualizar_item', item_id=item[0]) }}">Editar</a>
+                    <form action="{{ url_for('eliminar_item', item_id=item[0]) }}" method="POST" style="display:inline;">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

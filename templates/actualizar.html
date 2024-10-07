@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Item</title>
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+</head>
+<body>
+    <h1>Actualizar Item</h1>
+    <form action="{{ url_for('actualizar_item', item_id=item[0]) }}" method="POST">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" value="{{ item[1] }}" required>
+
+        <label for="peso">Peso</label>
+        <input type="number" id="peso" name="peso" value="{{ item[2] }}" required>
+
+        <label for="tamano">Tamaño</label>
+        <input type="number" id="tamano" name="tamano" value="{{ item[3] }}" required>
+
+        <label for="velocidad">Velocidad</label>
+        <input type="number" id="velocidad" name="velocidad" value="{{ item[4] }}" required><br>
+
+        <button type="submit">Actualizar</button>
+    </form>
+    <a class="button" href="{{ url_for('index') }}">Volver a la lista</a>
+</body>
+</html>
