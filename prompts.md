@@ -1,0 +1,6 @@
+- Dame una estructura básica para crear una API en python usando la librería Flask que realice operaciones CRUD sobre una base de datos SQLite.
+- Ahora quiero probar esta API con tests. Empieza haciendo una prueba unitaria.
+- Ahora quiero otro script de test para hacer pruebas de integración. Debe verificar que diferentes módulos o servicios utilizados por la aplicación funcionen bien en conjunto. Utiliza las librerías pytest y requests.
+- Ahora quiero un test de pruebas funcionales utilizando la librería selenium.
+- Ahora crea un test de seguridad.
+- Por último, crea un test de rendimiento usando la librería locust.
