@@ -4,3 +4,4 @@
 - Ahora quiero un test de pruebas funcionales utilizando la librería selenium.
 - Ahora crea un test de seguridad.
 - Por último, crea un test de rendimiento usando la librería locust.
+- Quiero aplicar el linter pylint a mis scripts de python.

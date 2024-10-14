@@ -1,21 +1,27 @@
-PYTHON=python
+COVERAGE=coverage run
+
+lint:
+	pylint *.py
+
+trivy:
+	trivy fs .
 
 run_app:
-	$(PYTHON) app.py
+	$(COVERAGE) app.py
 
 test_unit:
-	$(PYTHON) test_unit.py
+	$(COVERAGE) test_unit.py
 
 test_integration:
-	$(PYTHON) -m unittest test_app.py
+	$(COVERAGE) -m unittest test_app.py
 
 test_functional:
-	$(PYTHON) test_functional.py
+	$(COVERAGE) test_functional.py
 
 test_security:
-	pytest test_security.py
+	$(COVERAGE) test_security.py
 
 test_performance:
-	locust -f locustfile.py
+	$(COVERAGE) locustfile.py
 
-all: run_app test_unit test_integration test_functional test_security test_performance
+all: lint run_app test_unit test_integration test_functional test_security test_performance trivy

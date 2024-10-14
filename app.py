@@ -1,15 +1,19 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+"""
+API REST
+"""
+
 import sqlite3
+from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
-# Conexión a la base de datos SQLite
 def conectar_db():
+    """Conexión a la base de datos SQLite"""
     conn = sqlite3.connect('database.db')
     return conn
 
-# Crear la tabla si no existe (esto debería ejecutarse solo una vez)
 def crear_tabla():
+    """Crear la tabla si no existe (esto debería ejecutarse solo una vez)"""
     conn = conectar_db()
     cursor = conn.cursor()
     cursor.execute('''
@@ -24,9 +28,9 @@ def crear_tabla():
     conn.commit()
     conn.close()
 
-# Página principal: listar todos los items
 @app.route('/')
 def index():
+    """Página principal: listar todos los items"""
     conn = conectar_db()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM items')
@@ -35,9 +39,9 @@ def index():
 
     return render_template('index.html', items=items)
 
-# Página para crear un nuevo item
 @app.route('/crear', methods=['GET', 'POST'])
 def crear_item():
+    """Página para crear un nuevo item"""
     if request.method == 'POST':
         nombre = request.form['nombre']
         peso = request.form['peso']
@@ -49,7 +53,9 @@ def crear_item():
 
         conn = conectar_db()
         cursor = conn.cursor()
-        cursor.execute('INSERT INTO items (nombre, peso, tamano, velocidad) VALUES (?, ?, ?, ?)', (nombre, peso, tamano, velocidad))
+        cursor.execute(
+            'INSERT INTO items (nombre, peso, tamano, velocidad) VALUES (?, ?, ?, ?)',
+            (nombre, peso, tamano, velocidad))
         conn.commit()
         conn.close()
 
@@ -57,9 +63,9 @@ def crear_item():
 
     return render_template('crear.html')
 
-# Página para actualizar un item
 @app.route('/actualizar/<int:item_id>', methods=['GET', 'POST'])
 def actualizar_item(item_id):
+    """Página para actualizar un item"""
     conn = conectar_db()
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM items WHERE id = ?', (item_id,))
@@ -74,7 +80,9 @@ def actualizar_item(item_id):
         tamano = request.form['tamano']
         velocidad = request.form['velocidad']
 
-        cursor.execute('UPDATE items SET nombre = ?, peso = ?, tamano = ?, velocidad = ? WHERE id = ?', (nombre, peso, tamano, velocidad, item_id))
+        cursor.execute(
+            'UPDATE items SET nombre = ?, peso = ?, tamano = ?, velocidad = ? WHERE id = ?',
+            (nombre, peso, tamano, velocidad, item_id))
         conn.commit()
         conn.close()
 
@@ -82,9 +90,9 @@ def actualizar_item(item_id):
 
     return render_template('actualizar.html', item=item)
 
-# Eliminar un item
 @app.route('/eliminar/<int:item_id>', methods=['POST'])
 def eliminar_item(item_id):
+    """Eliminar un item"""
     conn = conectar_db()
     cursor = conn.cursor()
     cursor.execute('DELETE FROM items WHERE id = ?', (item_id,))

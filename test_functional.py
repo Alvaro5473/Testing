@@ -1,27 +1,31 @@
-# Test funcional
-# python test_functional.py
+"""
+Test funcional
+python test_functional.py
+coverage run test_functional.py
+"""
 
+import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-import time
 
 class FunctionalTest(unittest.TestCase):
+    """Test funcional"""
 
     @classmethod
     def setUpClass(cls):
         # Configurar el driver del navegador (por ejemplo, Chrome)
-        cls.driver = webdriver.Chrome()  # Asegúrate de tener el chromedriver en tu PATH o especificar su ubicación
-        cls.driver.get('http://127.0.0.1:5000/')  # Asegúrate de que tu aplicación Flask esté corriendo en este puerto
+        cls.driver = webdriver.Chrome()
+        cls.driver.get('http://127.0.0.1:5000/')
 
     @classmethod
     def tearDownClass(cls):
-        # Cerrar el navegador después de que todos los tests se ejecuten
+        """Cerrar el navegador después de que todos los tests se ejecuten"""
         cls.driver.quit()
 
-    # Test: Crear un nuevo item
     def test_crear_nuevo_item(self):
+        """Test: Crear un nuevo item"""
+
         driver = self.driver
 
         # Navegar a la página de creación de un nuevo item
