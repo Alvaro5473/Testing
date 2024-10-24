@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "poetry"
+version = "0.1.0"
+description = "API que realiza operaciones CRUD sobre una base de datos SQLite3"
+authors = ["Álvaro Rivas"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
