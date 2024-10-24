@@ -24,4 +24,10 @@ test_security:
 test_performance:
 	$(COVERAGE) locustfile.py
 
+encrypt_secrets:
+	sops -e secrets.yaml > secrets.enc.yaml
+
+decrypt_secrets:
+	sops -d secrets.enc.yaml > secrets.yaml
+
 all: lint run_app test_unit test_integration test_functional test_security test_performance trivy

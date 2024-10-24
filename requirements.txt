@@ -5,3 +5,4 @@ unittest
 locust
 pylint
 coverage
+python-dotenv

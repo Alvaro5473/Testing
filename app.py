@@ -2,14 +2,19 @@
 API REST
 """
 
+import os
+from dotenv import load_dotenv
 import sqlite3
 from flask import Flask, request, render_template, redirect, url_for
+
+load_dotenv()
+database_url = os.getenv('DATABASE_URL')
 
 app = Flask(__name__)
 
 def conectar_db():
     """Conexión a la base de datos SQLite"""
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('DATABASE_URL')
     return conn
 
 def crear_tabla():

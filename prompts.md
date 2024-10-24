@@ -3,5 +3,6 @@
 - Ahora quiero otro script de test para hacer pruebas de integración. Debe verificar que diferentes módulos o servicios utilizados por la aplicación funcionen bien en conjunto. Utiliza las librerías pytest y requests.
 - Ahora quiero un test de pruebas funcionales utilizando la librería selenium.
 - Ahora crea un test de seguridad.
-- Por último, crea un test de rendimiento usando la librería locust.
+- Crea un test de rendimiento usando la librería locust.
 - Quiero aplicar el linter pylint a mis scripts de python.
+- Tengo un fichero secrets.yaml con user y pass. Quiero generar una versión cifrada de este fichero con SOPS.
