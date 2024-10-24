@@ -8,6 +8,7 @@ Incluye los siguientes tipos de pruebas:
 - Seguridad
 - Rendimiento
 
+# Secrets
 Ejecute `make encrypt_secrets` o `make decrypt_secrets` para encriptar o desencriptar respectivamente los secretos del fichero `secrets.enc.yaml`.
 
 # Linter
